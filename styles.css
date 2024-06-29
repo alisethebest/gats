@@ -361,7 +361,6 @@ footer {
     from {
         transform: translateY(100%);
     }
-
     to {
         transform: translateY(0);
     }
@@ -371,7 +370,6 @@ footer {
     from {
         transform: scale(0);
     }
-
     to {
         transform: scale(1);
     }
@@ -381,7 +379,6 @@ footer {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }
@@ -479,7 +476,6 @@ button {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
