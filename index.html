@@ -15,11 +15,11 @@
                 <img src="images/tel-GA.png" alt="GA Technical Services Logo" class="logo">
             </div>
             <h1 class="header-title">GA Technical Services, INC.</h1>
-            <section >
-            <h3>Automation/Development</h3>
+            <section>
+                <h3>Automation/Development</h3>
             </section>
             <nav>
-                <ul>
+                <ul id="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="employment.html">Employment</a></li>
@@ -27,6 +27,7 @@
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="https://new-interface-c9540a.zapier.app/page" target="_blank">Free Estimator</a></li>
                 </ul>
+                <div id="menu-icon">☰</div>
             </nav>
         </div>
     </header>
@@ -40,13 +41,14 @@
                 nationwide that we
                 provide directly to end user organizations, contractors and public/governmental entities. GATS is
                 pleased to offer its
-                Electrical low voltage. 
+                Electrical low voltage.
                 <br>
                 <br>
-                We have now added more technology since the inception of ChatGPT and other AI tools. We now offer a variety of automations workflows that will also enable you to be more aggressive in the industry. 
+                We have now added more technology since the inception of ChatGPT and other AI tools. We now offer a
+                variety of automations workflows that will also enable you to be more aggressive in the industry.
                 <br>
                 <br>
-                Electrical/Network Infrastructure Cabling,  Our
+                Electrical/Network Infrastructure Cabling, Our
                 background in low and high-voltage wiring with our exceptional management team allows GATS the ability
                 to provide design
                 assistance installation and testing services that will ensure quality and on time completion of your
@@ -59,22 +61,27 @@
                 addition, we sell,
                 integrate, and upgrade products for a wide variety of systems, and GATS provides services to companies
                 of all sizes.
-                Below is a short list of some of the industries GATS covers.</p>
+                Below is a short list of some of the industries GATS covers.
+            </p>
         </section>
         <section class="services">
             <h2>Our Services</h2>
-            <p>The GATS objective is to meet the needs of our valued customers through customized service programs, leveraging
+            <p>The GATS objective is to meet the needs of our valued customers through customized service programs,
+                leveraging
                 our extensive market expertise. We specialize in:</p>
             <ul>
                 <li><strong>Network - Copper & Fiber Ethernet Cabling</strong>: Ensuring robust and reliable network
                     infrastructure.</li>
                 <li><strong>277/480V 3-Phase Electrical Installations/Tenant Improvement</strong>: Providing essential
                     electrical services for commercial and residential developments.</li>
-                <li><strong>600V — 15KV, 3-Phase Industrial Utility Electrical Services</strong>: Catering to the high-power
+                <li><strong>600V — 15KV, 3-Phase Industrial Utility Electrical Services</strong>: Catering to the
+                    high-power
                     requirements of industrial facilities.</li>
             </ul>
-            <p>GATS offers top POS hardware solutions and comprehensive support for industries including government, retail,
-                banking, education, and restaurants. We ensure every solution optimizes your operations, whether it involves
+            <p>GATS offers top POS hardware solutions and comprehensive support for industries including government,
+                retail,
+                banking, education, and restaurants. We ensure every solution optimizes your operations, whether it
+                involves
                 legacy equipment integration or complete system replacement.</p>
             <ul>
                 <li>Government and State Agencies</li>
@@ -96,15 +103,20 @@
                         <li>Banking</li>
                         <li>(LA Unified School District/Orange Unified School District)</li>
                         <li>Restaurants/ Fast Food (POS Systems)</li>
-                        <li><strong>Network - Copper & Fiber Ethernet Cabling</strong>: Specialized networking solutions.</li>
-                        <li><strong>277/480V 3-Phase Electrical Installations/Tenant Improvement</strong>: Critical electrical
+                        <li><strong>Network - Copper & Fiber Ethernet Cabling</strong>: Specialized networking
+                            solutions.</li>
+                        <li><strong>277/480V 3-Phase Electrical Installations/Tenant Improvement</strong>: Critical
+                            electrical
                             services for diverse applications.</li>
                         <li><strong>600V — 15KV, 3-Phase Industrial Utility Electrical Services</strong>: High-capacity
                             electrical support for industrial needs.</li>
                     </ul>
-                    <p>Government and state agencies manage public services and policy development. Retail sectors engage
-                        consumers with diverse product offerings, while banks provide financial stability and services. LA
-                        Unified and Orange Unified School Districts focus on educational excellence and community involvement.
+                    <p>Government and state agencies manage public services and policy development. Retail sectors
+                        engage
+                        consumers with diverse product offerings, while banks provide financial stability and services.
+                        LA
+                        Unified and Orange Unified School Districts focus on educational excellence and community
+                        involvement.
                         Fast food restaurants enhance service efficiency with advanced POS systems.</p>
                 </div>
             </div>
@@ -113,7 +125,121 @@
     <footer>
         <p>@GA Technical Services, Inc 1157 E. Arrow HWY, Suite 2, Glendora California 91740 Phone: 909-981-8600 Fax:
             (909)382-9897 Copyright, 2024. GA Technical Services, Inc. All Rights reserved</p>
+        <span id="footer-year"></span>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuIcon = document.getElementById("menu-icon");
+            const navLinks = document.getElementById("nav-links");
+            const elements = document.querySelectorAll(".animate-on-scroll");
+            const form = document.getElementById("contactForm");
+            const loader = document.getElementById("loader");
+
+            // Toggle navigation menu visibility on mobile
+            menuIcon.addEventListener("click", () => {
+                navLinks.classList.toggle("show");
+            });
+
+            // IntersectionObserver for animating elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animate");
+                    }
+                });
+            });
+
+            elements.forEach((element) => {
+                observer.observe(element);
+            });
+
+            // Form submission handler with validation
+            form.addEventListener("submit", (event) => {
+                event.preventDefault(); // Prevent default form submission
+                loader.style.display = "block"; // Show loader
+
+                if (validateForm()) {
+                    // Simulate form submission
+                    setTimeout(() => {
+                        loader.style.display = "none"; // Hide loader after submission
+                        alert("Form submitted successfully!");
+                        form.reset(); // Reset the form fields
+                    }, 2000);
+                } else {
+                    loader.style.display = "none"; // Hide loader if validation fails
+                    alert("Please fill out all required fields.");
+                }
+            });
+
+            // Form validation function
+            function validateForm() {
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const message = document.getElementById("message").value;
+
+                if (name === "" || email === "" || message === "") {
+                    return false;
+                }
+                if (!validateEmail(email)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+                return true;
+            }
+
+            // Email validation function
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            // Additional event listeners for enhanced UX
+            const navItems = document.querySelectorAll("#nav-links a");
+
+            navItems.forEach((item) => {
+                item.addEventListener("click", () => {
+                    navLinks.classList.remove("show"); // Hide menu on link click
+                });
+            });
+
+            // Handle window resize to ensure menu visibility reset
+            window.addEventListener("resize", () => {
+                if (window.innerWidth > 768) {
+                    navLinks.classList.remove("show");
+                }
+            });
+
+            // Smooth scroll for navigation links
+            navItems.forEach((item) => {
+                item.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    document.querySelector(item.getAttribute("href")).scrollIntoView({
+                        behavior: "smooth",
+                    });
+                });
+            });
+
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById("dark-mode-toggle");
+            darkModeToggle.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
+                localStorage.setItem(
+                    "darkMode",
+                    document.body.classList.contains("dark-mode")
+                );
+            });
+
+            // Initialize dark mode based on user's preference
+            if (localStorage.getItem("darkMode") === "true") {
+                document.body.classList.add("dark-mode");
+            }
+
+            // Footer year update
+            const footerYear = document.getElementById("footer-year");
+            footerYear.textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 
 </html>
