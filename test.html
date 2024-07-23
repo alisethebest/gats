@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GA Technical Services - Contact Us</title>
+    <title>GA Technical Services - Services</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-
 <body>
     <header>
         <div class="container">
@@ -25,7 +24,7 @@
                     <li><a href="services.html">Services</a></li>
                     <li><a href="employment.html">Employment</a></li>
                     <li><a href="technician.html">Independent Technician</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="test.html">Contact</a></li>
                     <li><a href="https://new-interface-c9540a.zapier.app/page" target="_blank">Free Estimator</a></li>
                 </ul>
                 <div id="menu-icon">☰</div>
@@ -89,7 +88,7 @@
                 <p>Phone: +1.9099818600</p>
                 <p>Email: frank.cervantes@gatechservices.com</p>
             </div>
-            <form class="contact-form" action="https://formkeep.com/f/67198cc95911" accept-charset="UTF-8"
+            <form class="contact-form" action="https://formspree.io/f/xyzgkeqa" accept-charset="UTF-8"
                 enctype="multipart/form-data" method="POST" id="contactForm">
                 <label for="name">Name: *</label>
                 <input type="text" id="name" name="name" required>
@@ -104,6 +103,7 @@
                 <button type="submit">Submit</button>
                 <div id="loader" class="loader" style="display:none;"></div>
             </form>
+
         </section>
     </main>
     <footer>
@@ -114,119 +114,6 @@
             <span id="footer-year"></span>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const menuIcon = document.getElementById("menu-icon");
-            const navLinks = document.getElementById("nav-links");
-            const elements = document.querySelectorAll(".animate-on-scroll");
-            const form = document.getElementById("contactForm");
-            const loader = document.getElementById("loader");
-
-            // Toggle navigation menu visibility on mobile
-            menuIcon.addEventListener("click", () => {
-                navLinks.classList.toggle("show");
-            });
-
-            // IntersectionObserver for animating elements on scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("animate");
-                    }
-                });
-            });
-
-            elements.forEach((element) => {
-                observer.observe(element);
-            });
-
-            // Form submission handler with validation
-            form.addEventListener("submit", (event) => {
-                event.preventDefault(); // Prevent default form submission
-                loader.style.display = "block"; // Show loader
-
-                if (validateForm()) {
-                    // Simulate form submission
-                    setTimeout(() => {
-                        loader.style.display = "none"; // Hide loader after submission
-                        alert("Form submitted successfully!");
-                        form.reset(); // Reset the form fields
-                    }, 2000);
-                } else {
-                    loader.style.display = "none"; // Hide loader if validation fails
-                    alert("Please fill out all required fields.");
-                }
-            });
-
-            // Form validation function
-            function validateForm() {
-                const name = document.getElementById("name").value;
-                const email = document.getElementById("email").value;
-                const message = document.getElementById("message").value;
-
-                if (name === "" || email === "" || message === "") {
-                    return false;
-                }
-                if (!validateEmail(email)) {
-                    alert("Please enter a valid email address.");
-                    return false;
-                }
-                return true;
-            }
-
-            // Email validation function
-            function validateEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
-
-            // Additional event listeners for enhanced UX
-            const navItems = document.querySelectorAll("#nav-links a");
-
-            navItems.forEach((item) => {
-                item.addEventListener("click", () => {
-                    navLinks.classList.remove("show"); // Hide menu on link click
-                });
-            });
-
-            // Handle window resize to ensure menu visibility reset
-            window.addEventListener("resize", () => {
-                if (window.innerWidth > 768) {
-                    navLinks.classList.remove("show");
-                }
-            });
-
-            // Smooth scroll for navigation links
-            navItems.forEach((item) => {
-                item.addEventListener("click", (event) => {
-                    event.preventDefault();
-                    document.querySelector(item.getAttribute("href")).scrollIntoView({
-                        behavior: "smooth",
-                    });
-                });
-            });
-
-            // Dark mode toggle
-            const darkModeToggle = document.getElementById("dark-mode-toggle");
-            darkModeToggle.addEventListener("click", () => {
-                document.body.classList.toggle("dark-mode");
-                localStorage.setItem(
-                    "darkMode",
-                    document.body.classList.contains("dark-mode")
-                );
-            });
-
-            // Initialize dark mode based on user's preference
-            if (localStorage.getItem("darkMode") === "true") {
-                document.body.classList.add("dark-mode");
-            }
-
-            // Footer year update
-            const footerYear = document.getElementById("footer-year");
-            footerYear.textContent = new Date().getFullYear();
-        });
-    </script>
-</body>
-
-</html>
+    <div class="loader" id="loader" style="display: none;"></div>
+    </body>
+ </html>
